@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div tuiAppearance="floating" tuiCardLarge class="card">
+    <header tuiHeader>
+      <h2 tuiTitle>The URL Shortener :))</h2>
+    </header>
+
+    <section>
+      <tui-input formControlName="sourceUrl" [readOnly]="true">
+        Your Long URL
+        <input tuiTextfieldLegacy type="text" />
+      </tui-input>
+
+      <div [appSpace]="24"></div>
+
+      <tui-input formControlName="destinationUrl" [readOnly]="true">
+        Your New URL
+        <input tuiTextfieldLegacy type="text" />
+      </tui-input>
+    </section>
+
+    <footer>
+      <button appearance="primary" size="m" tuiButton type="submit">
+        Shorten Another
+      </button>
+      <span [appSpace]="24" [style.display]="'inline-block'"></span>
+      <button
+        appearance="secondary"
+        size="m"
+        tuiButton
+        type="button"
+        (click)="onCopy()"
+        [style.minWidth]="'105px'"
+      >
+        @if (hasCopied()) {
+          <tui-icon icon="@tui.check-check" />
+        } @else {
+          Copy URL
+        }
+      </button>
+    </footer>
+  </div>
+</form>

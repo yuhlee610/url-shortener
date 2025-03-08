@@ -1,0 +1,44 @@
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+  <div tuiAppearance="floating" tuiCardLarge class="card">
+    <header tuiHeader>
+      <h1 tuiTitle>Sign In Now</h1>
+    </header>
+
+    <section>
+      <tui-input formControlName="email">
+        Enter your email
+        <input tuiTextfieldLegacy type="email" />
+      </tui-input>
+
+      <tui-error formControlName="email" [error]="[] | tuiFieldError | async" />
+
+      <div [appSpace]="24"></div>
+
+      <tui-input formControlName="password">
+        Enter your password
+        <input tuiTextfieldLegacy type="password" />
+      </tui-input>
+
+      <tui-error
+        formControlName="password"
+        [error]="[] | tuiFieldError | async"
+      />
+    </section>
+
+    <footer>
+      <button
+        appearance="primary"
+        size="m"
+        tuiButton
+        type="submit"
+        [style.width]="'100%'"
+        [disabled]="!signInForm.valid"
+        [loading]="loading()"
+      >
+        Sign In
+      </button>
+      <div [appSpace]="12"></div>
+      <a tuiLink routerLink="/signup">You don't have an account. Register now!</a>
+    </footer>
+  </div>
+</form>

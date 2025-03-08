@@ -1,0 +1,12 @@
+<tui-tabs [(activeItemIndex)]="activeItemIndex">
+  <button tuiTab type="button" (click)="switchTab(0)">Date</button>
+  <button tuiTab type="button" (click)="switchTab(1)">Month</button>
+</tui-tabs>
+
+<div [appSpace]="24"></div>
+
+@if (activeItemIndex === 0) {
+  <app-date-tab (submit)="submit($event)" [result]="result()" />
+} @else {
+  <app-month-tab (submit)="submit($event)" [result]="result()" />
+}

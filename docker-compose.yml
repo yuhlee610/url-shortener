@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    container_name: url-shortener-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234            # Root password for MySQL
+      MYSQL_DATABASE: url_shortener        # Name of the database to create
+    volumes:
+      - mysql_data:/var/lib/mysql          # Persistent storage for database data
+    networks:
+      - mysql_network
+
+volumes:
+  mysql_data:
+
+networks:
+  mysql_network:

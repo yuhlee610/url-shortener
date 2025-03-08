@@ -1,0 +1,66 @@
+<table tuiTable>
+  <thead>
+    <tr>
+      <th tuiTh>Id</th>
+      <th tuiTh [resizable]="true">Original Url</th>
+      <th tuiTh [resizable]="true">Short Url</th>
+      <th tuiTh>Created At</th>
+      <th tuiTh>Actions</th>
+    </tr>
+  </thead>
+  <tbody tuiTbody>
+    <tr *ngFor="let item of urls()">
+      <td tuiTd>
+        {{ item.id }}
+      </td>
+      <td tuiTd>
+        <a [href]="item.sourceUrl" tuiLink>{{ item.sourceUrl }}</a>
+      </td>
+      <td tuiTd>
+        <a [href]="item.destinationUrl" tuiLink>{{ item.destinationUrl }}</a>
+      </td>
+      <td tuiTd>
+        {{ item.createdAt | date: "short" }}
+      </td>
+      <td tuiTd>
+        <button
+          appearance="action"
+          iconStart="@tui.trash-2"
+          size="xs"
+          tuiIconButton
+          type="button"
+          (click)="onDelete(item.id)"
+        >
+          Delete
+        </button>
+        |
+        <a tuiLink [routerLink]="'/tracking/' + item.id">
+          <button
+            appearance="action"
+            iconStart="@tui.trending-up"
+            size="xs"
+            tuiIconButton
+            type="button"
+          >
+            Tracking
+          </button>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td [colSpan]="3">
+        <tui-table-pagination
+          [style.marginTop]="'20px'"
+          [page]="(metadata()?.page || 1) - 1"
+          [total]="metadata()?.totalItems || 0"
+          (paginationChange)="onPagination($event)"
+          [items]="[10, 20, 30]"
+        />
+      </td>
+    </tr>
+  </tfoot>
+</table>

@@ -1,0 +1,21 @@
+<tui-input-month-range [tuiTextfieldCleaner]="true" [(ngModel)]="range" [max]="max" [maxLength]="24">
+  Choose a range of months
+  <input placeholder="3 months or more" tuiTextfieldLegacy />
+</tui-input-month-range>
+
+<div [appSpace]="24"></div>
+
+<button size="m" tuiButton type="button" (click)="onSubmit()">Submit</button>
+
+<div [appSpace]="24"></div>
+
+<apx-chart
+  #chart
+  [series]="chartOptions.series"
+  [chart]="chartOptions.chart"
+  [xaxis]="chartOptions.xaxis"
+  [dataLabels]="chartOptions.dataLabels"
+  [grid]="chartOptions.grid"
+  [stroke]="chartOptions.stroke"
+  [title]="chartOptions.title"
+></apx-chart>

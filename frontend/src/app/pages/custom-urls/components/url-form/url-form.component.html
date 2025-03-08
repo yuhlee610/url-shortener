@@ -1,0 +1,50 @@
+<form [formGroup]="urlForm" (ngSubmit)="onSubmit()">
+  <div tuiAppearance="floating" tuiCardLarge class="card">
+    <header tuiHeader>
+      <h1 tuiTitle>Custom your url now :))</h1>
+    </header>
+
+    <section>
+      <tui-input formControlName="sourceUrl">
+        Shorten a long URL
+        <input tuiTextfieldLegacy type="text" />
+      </tui-input>
+      <tui-error
+        formControlName="sourceUrl"
+        [error]="[] | tuiFieldError | async"
+      />
+
+      <div [appSpace]="24"></div>
+
+      <div class="flex">
+        <tui-input [readOnly]="true" formControlName="domain">
+          Domain
+          <input tuiTextfieldLegacy type="text" />
+        </tui-input>
+        <div>
+          <tui-input formControlName="path">
+            Enter custom url
+            <input tuiTextfieldLegacy type="text" placeholder="Eg: /foo,..." />
+          </tui-input>
+
+          <tui-error
+            formControlName="path"
+            [error]="[] | tuiFieldError | async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <button
+        appearance="primary"
+        size="m"
+        tuiButton
+        type="submit"
+        [loading]="loading()"
+      >
+        Shorten URL
+      </button>
+    </footer>
+  </div>
+</form>

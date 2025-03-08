@@ -1,0 +1,11 @@
+<div class="container">
+  <h1 tuiTitle>URLs management</h1>
+  <tui-loader [showLoader]="loading()">
+    <app-urls-table
+      [urls]="urls()"
+      [metadata]="metadata()"
+      (paginate)="onPagination($event)"
+      (delete)="onDelete($event)"
+    />
+  </tui-loader>
+</div>

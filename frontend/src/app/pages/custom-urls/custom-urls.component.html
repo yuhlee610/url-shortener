@@ -1,0 +1,5 @@
+@if (canShortenAnotherUrl()) {
+  <app-result [urlInfo]="urlInfo()" (back)="shortenAnotherUrl()" />
+} @else {
+  <app-url-form (onCreateSuccess)="onCreateSuccess($event)" />
+}

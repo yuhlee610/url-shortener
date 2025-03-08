@@ -1,0 +1,36 @@
+<header tuiNavigationHeader>
+  <div class="container">
+    @if (isAuthenticated) {
+      <a tuiLink routerLink="/" iconEnd="@tui.house" class="link">Home </a>
+      <a tuiLink routerLink="/custom-urls" iconEnd="@tui.pen-line" class="link"
+        >Custom URLs</a
+      >
+      <a tuiLink routerLink="/my-urls" iconEnd="@tui.link" class="link">My URLs</a>
+      <a
+        tuiLink
+        routerLink="/tracking"
+        iconEnd="@tui.chart-no-axes-combined"
+        class="link"
+        >Tracking</a
+      >
+    } @else {
+      <a tuiLink routerLink="/" iconEnd="@tui.house" class="link">Home</a>
+    }
+  </div>
+  <div [style.marginLeft]="'auto'">
+    @if (isAuthenticated) {
+      <button
+        appearance="floating"
+        tuiButton
+        type="button"
+        (click)="onLogout()"
+      >
+        Log out
+      </button>
+    } @else {
+      <a routerLink="/signin">
+        <button appearance="primary" tuiButton type="button">Sign in</button>
+      </a>
+    }
+  </div>
+</header>
